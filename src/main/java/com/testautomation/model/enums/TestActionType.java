@@ -1,5 +1,8 @@
 package com.testautomation.model.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum TestActionType {
     NAVIGATE("navigate", "Navigate to a URL"),
     CLICK("click", "Click on an element"),
@@ -33,15 +36,7 @@ public enum TestActionType {
         this.value = value;
         this.description = description;
     }
-    
-    public String getValue() {
-        return value;
-    }
-    
-    public String getDescription() {
-        return description;
-    }
-    
+
     public static TestActionType fromString(String text) {
         for (TestActionType action : TestActionType.values()) {
             if (action.value.equalsIgnoreCase(text)) {

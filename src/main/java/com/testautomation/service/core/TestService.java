@@ -11,10 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -24,39 +21,39 @@ public class TestService {
     private final TestResultRepository testResultRepository;
     private final TestRunner testRunner;
     private final WebSocketService webSocketService;
-    
+
     public Test createTest(Test test) {
         test.setCreatedAt(LocalDateTime.now());
         test.setStatus(TestStatus.QUEUED);
         return testRepository.save(test);
     }
-    
+
     public List<Test> getAllTests() {
         return testRepository.findAll();
     }
-    
+
     public Optional<Test> getTestById(String id) {
         return testRepository.findById(id);
     }
-    
+
     public List<Test> getTestsByStatus(TestStatus status) {
         return testRepository.findByStatus(status);
     }
-    
+
     public List<Test> getTestsByAgentId(String agentId) {
         return testRepository.findByAgentId(agentId);
     }
-    
+
     public CompletableFuture<TestResult> runTest(String testId, String agentId) {
         Optional<Test> optionalTest = testRepository.findById(testId);
-        
+
         if (optionalTest.isPresent()) {
             Test test = optionalTest.get();
             test.setAgentId(agentId);
             test.updateStatus(TestStatus.QUEUED, null);
             testRepository.save(test);
             webSocketService.sendTestStatus(test);
-            
+
             return testRunner.runTest(test, agentId);
         } else {
             CompletableFuture<TestResult> future = new CompletableFuture<>();
@@ -64,21 +61,23 @@ public class TestService {
             return future;
         }
     }
-    
+
     public CompletableFuture<List<TestResult>> runTests(List<String> testIds, String agentId) {
-        List<Test> tests = testRepository.findAllById(testIds);
-        
+        Iterable<Test> testsIterable = testRepository.findAllById(testIds);
+        List<Test> tests = new ArrayList<>();
+        testsIterable.forEach(tests::add);
+
         for (Test test : tests) {
             test.setAgentId(agentId);
             test.updateStatus(TestStatus.QUEUED, null);
         }
-        
+
         testRepository.saveAll(tests);
         tests.forEach(webSocketService::sendTestStatus);
-        
+
         return testRunner.runTests(tests, agentId);
     }
-    
+
     public Test updateTest(String id, Test updatedTest) {
         return testRepository.findById(id)
             .map(test -> {
@@ -95,16 +94,16 @@ public class TestService {
                 test.setMetadata(updatedTest.getMetadata());
                 test.setPreconditions(updatedTest.getPreconditions());
                 test.setExpectedResults(updatedTest.getExpectedResults());
-                
+
                 return testRepository.save(test);
             })
             .orElseThrow(() -> new RuntimeException("Test not found with ID: " + id));
     }
-    
+
     public void deleteTest(String id) {
         testRepository.deleteById(id);
     }
-    
+
     public Test cancelTest(String id) {
         return testRepository.findById(id)
             .map(test -> {
@@ -119,7 +118,7 @@ public class TestService {
             })
             .orElseThrow(() -> new RuntimeException("Test not found with ID: " + id));
     }
-    
+
     public List<TestResult> getTestResults(String testId) {
         return testResultRepository.findByTestId(testId);
     }

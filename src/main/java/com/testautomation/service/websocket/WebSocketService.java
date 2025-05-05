@@ -3,6 +3,7 @@ package com.testautomation.service.websocket;
 import com.testautomation.model.LogEntry;
 import com.testautomation.model.Test;
 import com.testautomation.model.TestResult;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
@@ -32,21 +33,15 @@ public class WebSocketService {
             new AgentStatusMessage(agentId, status));
     }
     
+    @Getter
     private static class AgentStatusMessage {
-        private String agentId;
-        private String status;
+        private final String agentId;
+        private final String status;
         
         public AgentStatusMessage(String agentId, String status) {
             this.agentId = agentId;
             this.status = status;
         }
-        
-        public String getAgentId() {
-            return agentId;
-        }
-        
-        public String getStatus() {
-            return status;
-        }
+
     }
 }

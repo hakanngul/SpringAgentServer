@@ -1,5 +1,6 @@
 package com.testautomation.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -21,9 +22,9 @@ public class AppConfig {
         executor.initialize();
         return executor;
     }
-    
+
     @Bean(name = "screenshotsDir")
-    public String screenshotsDir() {
-        return System.getProperty("user.dir") + "/screenshots";
+    public String screenshotsDir(@Value("${app.screenshots-dir}") String configuredDir) {
+        return configuredDir;
     }
 }

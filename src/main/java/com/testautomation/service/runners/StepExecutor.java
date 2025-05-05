@@ -11,41 +11,41 @@ import java.util.regex.Pattern;
 
 @Component
 public class StepExecutor {
-    
+
     private static final Pattern VARIABLE_PATTERN = Pattern.compile("\\$\\{([^}]+)\\}");
-    
+
     public static String replaceVariables(String value, Map<String, Object> variables, Map<String, Object> dataSet) {
         if (value == null) {
             return null;
         }
-        
+
         Matcher matcher = VARIABLE_PATTERN.matcher(value);
         StringBuffer sb = new StringBuffer();
-        
+
         while (matcher.find()) {
             String variableName = matcher.group(1);
             Object replacement = null;
-            
+
             // First check in variables
             if (variables != null && variables.containsKey(variableName)) {
                 replacement = variables.get(variableName);
-            } 
+            }
             // Then check in dataSet
             else if (dataSet != null && dataSet.containsKey(variableName)) {
                 replacement = dataSet.get(variableName);
             }
-            
+
             if (replacement != null) {
                 matcher.appendReplacement(sb, replacement.toString().replace("$", "\\$"));
             } else {
                 matcher.appendReplacement(sb, matcher.group(0));
             }
         }
-        
+
         matcher.appendTail(sb);
         return sb.toString();
     }
-    
+
     private static TestActionType getActionType(String action) {
         try {
             return TestActionType.fromString(action.toLowerCase());
@@ -53,7 +53,7 @@ public class StepExecutor {
             throw new IllegalArgumentException("Unsupported action type: " + action);
         }
     }
-    
+
     public static void executeStep(
         Page page,
         TestStep step,
@@ -66,9 +66,9 @@ public class StepExecutor {
         String target = replaceVariables(step.getTarget(), variables, dataSet);
         String strategy = step.getStrategy();
         String value = replaceVariables(step.getValue(), variables, dataSet);
-        
+
         TestActionType actionType = getActionType(action);
-        
+
         switch (actionType) {
             case NAVIGATE:
                 page.navigate(target);
@@ -84,7 +84,7 @@ public class StepExecutor {
                 page.waitForTimeout(waitTime);
                 break;
             case WAIT_FOR_NAVIGATION:
-                page.waitForNavigation();
+                page.waitForNavigation(() -> {});
                 break;
             case WAIT_FOR_ELEMENT:
             case WAIT_FOR_SELECTOR:
@@ -107,7 +107,6 @@ public class StepExecutor {
                 ElementUtils.verifyText(page, target, strategy, value);
                 break;
             case TAKE_SCREENSHOT:
-            case SCREENSHOT:
                 // Screenshot is handled by TestStepExecutor
                 break;
             case FILL:
