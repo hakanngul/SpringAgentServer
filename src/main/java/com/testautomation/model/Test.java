@@ -102,6 +102,7 @@ public class Test {
             browserOptions = BrowserOptions.builder()
                 .browserType(browserPreference)
                 .headless(headless)
+                .fullScreen(browserFullScreen)
                 .build();
         }
         return browserOptions;

@@ -37,6 +37,10 @@ public class TestStepExecutor {
         boolean continueOnFailure
     ) throws Exception {
         boolean allStepsSuccessful = true;
+        // Eğer adım yoksa, başarılı olarak kabul et
+        if (steps == null || steps.isEmpty()) {
+            return true;
+        }
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
         for (int i = 0; i < steps.size(); i++) {
