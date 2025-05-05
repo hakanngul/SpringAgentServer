@@ -4,6 +4,13 @@ import com.testautomation.model.Test;
 import com.testautomation.model.TestRequest;
 import com.testautomation.model.TestResult;
 import com.testautomation.service.core.TestService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +22,16 @@ import java.util.concurrent.CompletableFuture;
 @RestController
 @RequestMapping("/api/tests")
 @RequiredArgsConstructor
+@Tag(name = "Test Yönetimi", description = "Test oluşturma, çalıştırma ve yönetme API'leri")
 public class TestController {
     private final TestService testService;
 
+    @Operation(summary = "Yeni test oluştur", description = "Yeni bir test senaryosu oluşturur")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Test başarıyla oluşturuldu",
+                content = @Content(mediaType = "application/json", schema = @Schema(implementation = Test.class))),
+        @ApiResponse(responseCode = "400", description = "Geçersiz istek", content = @Content)
+    })
     @PostMapping
     public ResponseEntity<Test> createTest(@RequestBody Test test) {
         Test createdTest = testService.createTest(test);

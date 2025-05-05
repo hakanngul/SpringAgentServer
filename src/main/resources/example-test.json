@@ -3,37 +3,53 @@
   "description": "ExpandTesting practice sayfasında başarılı giriş yapma testi",
   "browserPreference": "chromium",
   "headless": false,
-  "takeScreenshots": false,
+  "takeScreenshots": true,
   "browserFullScreen": true,
   "priority": "HIGH",
   "category": "FUNCTIONAL",
   "tags": ["login", "expandtesting"],
   "preconditions": "Kullanıcı adı ve şifre bilgileri bilinmelidir.",
   "expectedResults": "Kullanıcı başarıyla giriş yapmalıdır ve güvenli sayfaya yönlendirilmelidir.",
+  "continueOnFailure": true,
+  "stepOptions": {
+    "delay": 500,
+    "retries": 2,
+    "retryDelay": 1000
+  },
   "steps": [
     {
       "action": "navigate",
-      "value": "https://practice.expandtesting.com/login",
+      "target": "https://practice.expandtesting.com/login",
       "description": "Login sayfasına git"
     },
     {
       "action": "wait",
-      "value": "1000",
-      "description": "Sayfanın yüklenmesini bekle"
+      "value": "2000",
+      "description": "Sayfanın yüklenmesini bekle (2 saniye)"
     },
     {
       "action": "type",
-      "target": "username",
+      "target": "#username",
       "strategy": "id",
       "value": "practice",
       "description": "Kullanıcı adını gir"
     },
     {
+      "action": "wait",
+      "value": "1000",
+      "description": "Kısa bekle (1 saniye)"
+    },
+    {
       "action": "type",
-      "target": "password",
+      "target": "#password",
       "strategy": "id",
-      "value": "SuperSecretPassword",
+      "value": "SuperSecretPassword!",
       "description": "Şifreyi gir"
+    },
+    {
+      "action": "wait",
+      "value": "1000",
+      "description": "Kısa bekle (1 saniye)"
     },
     {
       "action": "click",
@@ -42,9 +58,19 @@
       "description": "Giriş butonuna tıkla"
     },
     {
+      "action": "wait",
+      "value": "3000",
+      "description": "Yönlendirmeyi bekle (3 saniye)"
+    },
+    {
       "action": "verifyUrl",
-      "value": "https://practice.expandtesting.com/secure-area",
+      "target": "https://practice.expandtesting.com/secure-area",
       "description": "URL'in güvenli sayfaya yönlendirildiğini doğrula"
+    },
+    {
+      "action": "wait",
+      "value": "10000",
+      "description": "Sonucu görmek için bekle (10 saniye)"
     }
   ]
 }
