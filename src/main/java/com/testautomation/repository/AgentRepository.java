@@ -1,7 +1,7 @@
 package com.testautomation.repository;
 
 import com.testautomation.model.Agent;
-import com.testautomation.model.AgentStatus;
+import com.testautomation.model.enums.AgentStatus;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

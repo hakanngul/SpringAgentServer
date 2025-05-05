@@ -1,5 +1,6 @@
 package com.testautomation.model;
 
+import com.testautomation.model.enums.AgentStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;

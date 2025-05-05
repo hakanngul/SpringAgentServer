@@ -20,11 +20,11 @@ public class TestResult {
     private boolean headless;
     private boolean takeScreenshots;
     private boolean browserFullScreen;
-    private boolean success;
     private String startTime;
     private String endTime;
     private long duration;
-    private List<TestStepResult> steps = new ArrayList<>();
+    private boolean success;
     private List<LogEntry> logs = new ArrayList<>();
     private List<String> screenshots = new ArrayList<>();
+    private List<TestStepResult> steps = new ArrayList<>();
 }

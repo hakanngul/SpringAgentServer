@@ -1,7 +1,7 @@
 package com.testautomation.service.core;
 
 import com.testautomation.model.Agent;
-import com.testautomation.model.AgentStatus;
+import com.testautomation.model.enums.AgentStatus;
 import com.testautomation.model.AgentStatusInfo;
 import com.testautomation.repository.AgentRepository;
 import com.testautomation.service.websocket.WebSocketService;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;

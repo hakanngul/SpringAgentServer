@@ -1,4 +1,4 @@
-package com.testautomation.model;
+package com.testautomation.model.enums;
 
 public enum AgentStatus {
     IDLE,
