@@ -1,6 +1,7 @@
 package com.testautomation.service.core;
 
 import com.testautomation.model.Test;
+import com.testautomation.model.TestRequest;
 import com.testautomation.model.TestResult;
 import com.testautomation.model.enums.TestStatus;
 import com.testautomation.repository.TestRepository;
@@ -60,6 +61,35 @@ public class TestService {
             future.completeExceptionally(new RuntimeException("Test not found with ID: " + testId));
             return future;
         }
+    }
+
+    public CompletableFuture<TestResult> runTest(TestRequest request) {
+        Test test = request.getTest();
+        String agentId = request.getAgentId();
+
+        // Save the test if it doesn't have an ID
+        if (test.getId() == null || test.getId().isEmpty()) {
+            test = createTest(test);
+        }
+
+        test.setAgentId(agentId);
+        test.updateStatus(TestStatus.QUEUED, null);
+        testRepository.save(test);
+        webSocketService.sendTestStatus(test);
+
+        CompletableFuture<TestResult> future = testRunner.runTest(test, agentId);
+
+        // Handle async request with callback URL
+        if (request.isAsync() && request.getCallbackUrl() != null && !request.getCallbackUrl().isEmpty()) {
+            future.thenAccept(result -> {
+                // Here you would implement the callback logic
+                // For example, using RestTemplate to POST the result to the callback URL
+                // This is just a placeholder for the implementation
+                System.out.println("Test completed, would call back to: " + request.getCallbackUrl());
+            });
+        }
+
+        return future;
     }
 
     public CompletableFuture<List<TestResult>> runTests(List<String> testIds, String agentId) {

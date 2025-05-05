@@ -27,11 +27,15 @@ public enum TestActionType {
     DRAG_AND_DROP("draganddrop", "Drag and drop an element"),
     FOCUS("focus", "Focus on an element"),
     SCROLL_INTO_VIEW("scrollintoview", "Scroll an element into view"),
-    EVALUATE("evaluate", "Evaluate JavaScript in the browser context");
-    
+    EVALUATE("evaluate", "Evaluate JavaScript in the browser context"),
+    SCREENSHOT("screenshot", "Take a screenshot"),
+    SET_VARIABLE("setvariable", "Set a variable in the test context"),
+    GET_TEXT("gettext", "Get text from an element and store it in a variable"),
+    GET_ATTRIBUTE("getattribute", "Get an attribute from an element and store it in a variable");
+
     private final String value;
     private final String description;
-    
+
     TestActionType(String value, String description) {
         this.value = value;
         this.description = description;

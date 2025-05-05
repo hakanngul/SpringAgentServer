@@ -2,6 +2,7 @@ package com.testautomation.service.runners;
 
 import com.microsoft.playwright.Page;
 import com.testautomation.model.TestStep;
+import com.testautomation.model.TestStepOptions;
 import com.testautomation.model.enums.TestActionType;
 import org.springframework.stereotype.Component;
 
@@ -57,24 +58,30 @@ public class StepExecutor {
     public static void executeStep(
         Page page,
         TestStep step,
-        int stepIndex,
-        int totalSteps,
         Map<String, Object> variables,
         Map<String, Object> dataSet
-    ) throws Exception {
+    )
+    {
         String action = step.getAction();
         String target = replaceVariables(step.getTarget(), variables, dataSet);
         String strategy = step.getStrategy();
         String value = replaceVariables(step.getValue(), variables, dataSet);
 
         TestActionType actionType = getActionType(action);
+        TestStepOptions options = step.getStepOptions();
 
         switch (actionType) {
             case NAVIGATE:
                 page.navigate(target);
                 break;
             case CLICK:
-                ElementUtils.findAndClick(page, target, strategy);
+                if (options.isForce()) {
+                    ElementUtils.findElement(page, target, strategy).click(
+                        new com.microsoft.playwright.Locator.ClickOptions().setForce(true)
+                    );
+                } else {
+                    ElementUtils.findAndClick(page, target, strategy);
+                }
                 break;
             case TYPE:
                 ElementUtils.findAndType(page, target, strategy, value);
@@ -107,7 +114,26 @@ public class StepExecutor {
                 ElementUtils.verifyText(page, target, strategy, value);
                 break;
             case TAKE_SCREENSHOT:
+            case SCREENSHOT:
                 // Screenshot is handled by TestStepExecutor
+                break;
+            case SET_VARIABLE:
+                if (target != null && value != null) {
+                    variables.put(target, value);
+                }
+                break;
+            case GET_TEXT:
+                if (target != null && value != null) {
+                    String text = ElementUtils.findElement(page, target, strategy).textContent();
+                    variables.put(value, text);
+                }
+                break;
+            case GET_ATTRIBUTE:
+                if (target != null && value != null && step.getAdditionalProperties().containsKey("attribute")) {
+                    String attributeName = (String) step.getAdditionalProperties().get("attribute");
+                    String attributeValue = ElementUtils.findElement(page, target, strategy).getAttribute(attributeName);
+                    variables.put(value, attributeValue);
+                }
                 break;
             case FILL:
                 ElementUtils.findAndType(page, target, strategy, value);

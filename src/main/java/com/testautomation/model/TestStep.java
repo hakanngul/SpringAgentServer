@@ -1,5 +1,6 @@
 package com.testautomation.model;
 
+import com.testautomation.model.enums.TestActionType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,10 +23,10 @@ public class TestStep {
     private String action;
 
     /**
-     * The TestAction enum value corresponding to the action string
+     * The TestActionType enum value corresponding to the action string
      */
     @Builder.Default
-    private TestAction actionType = null;
+    private TestActionType actionType = null;
 
     /**
      * CSS selector, XPath, etc. for targeting elements
@@ -67,10 +68,10 @@ public class TestStep {
     /**
      * Get the action type as an enum
      */
-    public TestAction getActionType() {
+    public TestActionType getActionType() {
         if (actionType == null && action != null) {
             try {
-                actionType = TestAction.fromString(action);
+                actionType = TestActionType.fromString(action);
             } catch (IllegalArgumentException e) {
                 // Keep actionType as null if the action string is not recognized
             }

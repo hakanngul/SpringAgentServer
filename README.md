@@ -10,6 +10,11 @@ A Spring Boot-based test automation framework that uses Playwright for browser a
 - RESTful API for test management
 - Screenshot capture and storage
 - Detailed test reporting
+- Advanced browser configuration options
+- Test context for variables and artifacts
+- Step-level options (force, delay, retries, etc.)
+- Asynchronous test execution with callbacks
+- Conditional test execution (continue on failure)
 
 ## Requirements
 
@@ -68,7 +73,8 @@ java -jar build/libs/test-automation-0.0.1-SNAPSHOT.jar
 - `POST /api/tests` - Create a new test
 - `PUT /api/tests/{id}` - Update a test
 - `DELETE /api/tests/{id}` - Delete a test
-- `POST /api/tests/{id}/run` - Run a test
+- `POST /api/tests/{id}/run` - Run a test by ID
+- `POST /api/tests/run` - Run a test with advanced options
 - `POST /api/tests/run-batch` - Run multiple tests
 - `POST /api/tests/{id}/cancel` - Cancel a running test
 - `GET /api/tests/{id}/results` - Get test results
@@ -109,11 +115,17 @@ com.testautomation
 │   │   ├── TestPriority.java
 │   │   ├── TestCategory.java
 │   │   ├── TestActionType.java
+│   │   ├── BrowserType.java
 │   │   └── SelectorStrategy.java
 │   ├── Test.java
 │   ├── TestStep.java
 │   ├── TestResult.java
 │   ├── TestStepResult.java
+│   ├── TestContext.java
+│   ├── BrowserOptions.java
+│   ├── TestStepOptions.java
+│   ├── TestAction.java
+│   ├── TestRequest.java
 │   └── LogEntry.java
 ├── repository
 │   ├── TestRepository.java
