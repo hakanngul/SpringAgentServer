@@ -1,0 +1,50 @@
+{
+  "name": "ExpandTesting Login Testi",
+  "description": "ExpandTesting practice sayfasında başarılı giriş yapma testi",
+  "browserPreference": "chromium",
+  "headless": false,
+  "takeScreenshots": false,
+  "browserFullScreen": true,
+  "priority": "HIGH",
+  "category": "FUNCTIONAL",
+  "tags": ["login", "expandtesting"],
+  "preconditions": "Kullanıcı adı ve şifre bilgileri bilinmelidir.",
+  "expectedResults": "Kullanıcı başarıyla giriş yapmalıdır ve güvenli sayfaya yönlendirilmelidir.",
+  "steps": [
+    {
+      "action": "navigate",
+      "value": "https://practice.expandtesting.com/login",
+      "description": "Login sayfasına git"
+    },
+    {
+      "action": "wait",
+      "value": "1000",
+      "description": "Sayfanın yüklenmesini bekle"
+    },
+    {
+      "action": "type",
+      "target": "username",
+      "strategy": "id",
+      "value": "practice",
+      "description": "Kullanıcı adını gir"
+    },
+    {
+      "action": "type",
+      "target": "password",
+      "strategy": "id",
+      "value": "SuperSecretPassword",
+      "description": "Şifreyi gir"
+    },
+    {
+      "action": "click",
+      "target": "button[type='submit']",
+      "strategy": "css",
+      "description": "Giriş butonuna tıkla"
+    },
+    {
+      "action": "verifyUrl",
+      "value": "https://practice.expandtesting.com/secure-area",
+      "description": "URL'in güvenli sayfaya yönlendirildiğini doğrula"
+    }
+  ]
+}

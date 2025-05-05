@@ -25,7 +25,7 @@ public class BrowserOptions {
      * Whether to run the browser in headless mode
      */
     @Builder.Default
-    private boolean headless = true;
+    private boolean headless = false;
     
     /**
      * Browser viewport width

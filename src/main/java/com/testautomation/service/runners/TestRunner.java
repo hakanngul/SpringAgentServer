@@ -39,6 +39,7 @@ public class TestRunner {
     private String screenshotsDir;
 
     public CompletableFuture<TestResult> runTest(Test test, String agentId) {
+        System.out.println("Starting test: " + test.getName() + " with agent: " + agentId);
         return CompletableFuture.supplyAsync(() -> {
             TestResult result = new TestResult();
             result.setId(UUID.randomUUID().toString());
@@ -76,6 +77,7 @@ public class TestRunner {
             };
 
             try (Playwright playwright = Playwright.create()) {
+                System.out.println("Playwright created successfully");
                 // Get browser options
                 BrowserOptions options = test.getBrowserOptions();
 
@@ -97,10 +99,18 @@ public class TestRunner {
                 }
 
                 // Launch browser
+                System.out.println("Launching browser: " + options.getBrowserType() + ", headless: " + options.isHeadless());
                 BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions()
                     .setHeadless(options.isHeadless());
-
-                browser = browserType.launch(launchOptions);
+                
+                try {
+                    browser = browserType.launch(launchOptions);
+                    System.out.println("Browser launched successfully");
+                } catch (Exception e) {
+                    System.err.println("Failed to launch browser: " + e.getMessage());
+                    e.printStackTrace();
+                    throw e;
+                }
 
                 // Create context
                 Browser.NewContextOptions contextOptions = new Browser.NewContextOptions()
@@ -198,6 +208,8 @@ public class TestRunner {
                 context.close();
                 browser.close();
             } catch (Exception e) {
+                System.err.println("Test execution error: " + e.getMessage());
+                e.printStackTrace();
                 logFn.accept("ERROR", "Test execution error: " + e.getMessage());
                 result.setSuccess(false);
 
@@ -219,6 +231,7 @@ public class TestRunner {
                 webSocketService.sendTestResult(result);
             }
 
+            System.out.println("Test completed: " + test.getName() + ", success: " + result.isSuccess());
             return result;
         });
     }
