@@ -93,6 +93,20 @@ public class TestController {
         return ResponseEntity.accepted().body(future);
     }
 
+    @Operation(summary = "Testi otomatik agent ile çalıştır", description = "Belirtilen testi otomatik olarak seçilen bir agent ile çalıştırır")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "202", description = "Test başlatıldı",
+                content = @Content(mediaType = "application/json", schema = @Schema(implementation = CompletableFuture.class))),
+        @ApiResponse(responseCode = "404", description = "Test bulunamadı", content = @Content)
+    })
+    @PostMapping("/{id}/run-auto")
+    public ResponseEntity<CompletableFuture<TestResult>> runTestWithAutoAgent(
+        @PathVariable String id
+    ) {
+        CompletableFuture<TestResult> future = testService.runTestWithAutoAgent(id);
+        return ResponseEntity.accepted().body(future);
+    }
+
     @PostMapping("/{id}/cancel")
     public ResponseEntity<Test> cancelTest(@PathVariable String id) {
         try {

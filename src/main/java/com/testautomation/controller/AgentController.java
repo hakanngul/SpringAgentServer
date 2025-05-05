@@ -2,6 +2,7 @@ package com.testautomation.controller;
 
 import com.testautomation.model.Test;
 import com.testautomation.model.TestResult;
+import com.testautomation.service.core.AgentPoolService;
 import com.testautomation.service.core.AgentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,34 +16,45 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AgentController {
     private final AgentService agentService;
-    
+    private final AgentPoolService agentPoolService;
+
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> registerAgent() {
         String agentId = agentService.registerAgent();
         return ResponseEntity.ok(Map.of("agentId", agentId));
     }
-    
+
     @PostMapping("/{agentId}/heartbeat")
     public ResponseEntity<Void> heartbeat(@PathVariable String agentId) {
         agentService.heartbeat(agentId);
         return ResponseEntity.ok().build();
     }
-    
+
     @PostMapping("/{agentId}/deregister")
     public ResponseEntity<Void> deregisterAgent(@PathVariable String agentId) {
         agentService.deregisterAgent(agentId);
         return ResponseEntity.ok().build();
     }
-    
+
     @GetMapping("/{agentId}/tests")
     public ResponseEntity<List<Test>> getAgentTests(@PathVariable String agentId) {
         List<Test> tests = agentService.getAgentTests(agentId);
         return ResponseEntity.ok(tests);
     }
-    
+
     @GetMapping("/{agentId}/results")
     public ResponseEntity<List<TestResult>> getAgentTestResults(@PathVariable String agentId) {
         List<TestResult> results = agentService.getAgentTestResults(agentId);
         return ResponseEntity.ok(results);
+    }
+
+    /**
+     * Agent havuzu durumunu al
+     * @return Agent havuzu durumu
+     */
+    @GetMapping("/pool/status")
+    public ResponseEntity<AgentPoolService.PoolStatus> getPoolStatus() {
+        AgentPoolService.PoolStatus status = agentPoolService.getPoolStatus();
+        return ResponseEntity.ok(status);
     }
 }

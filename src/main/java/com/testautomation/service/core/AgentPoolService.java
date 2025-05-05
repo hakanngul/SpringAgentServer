@@ -167,7 +167,49 @@ public class AgentPoolService {
 
         // Scale up if queue length exceeds threshold and we have fewer than max agents
         if (queueLength > scaleUpThreshold && agents.size() < maxAgents) {
-            int agentsToCreate = Math.min(queueLength - idleAgentCount, maxAgents - agents.size());
+            scaleUp(queueLength, idleAgentCount);
+        }
+        // Scale down if queue is small and we have more than min agents
+        else if (queueLength <= scaleDownThreshold && idleAgentCount > minAgents) {
+            scaleDown(queueLength, idleAgentCount);
+        }
+
+        // Log current pool status
+        logger.debug("Agent pool status: Total: {}, Min: {}, Max: {}, Queue size: {}",
+                agents.size(), minAgents, maxAgents, queueLength);
+    }
+
+    /**
+     * Agent havuzunu büyüt
+     */
+    public void scaleUp() {
+        // Get current queue status
+        TestQueueService.QueueStatus queueStatus = testQueueService.getQueueStatus();
+        int queueLength = queueStatus.getLength();
+
+        // Count idle agents
+        int idleAgentCount = 0;
+        for (Agent agent : agents.values()) {
+            if (agent.getStatus() == AgentStatus.IDLE) {
+                idleAgentCount++;
+            }
+        }
+
+        scaleUp(queueLength, idleAgentCount);
+    }
+
+    /**
+     * Agent havuzunu büyüt
+     * @param queueLength Kuyruk uzunluğu
+     * @param idleAgentCount Boşta agent sayısı
+     */
+    private void scaleUp(int queueLength, int idleAgentCount) {
+        // Scale up if we have fewer than max agents
+        if (agents.size() < maxAgents) {
+            int agentsToCreate = Math.min(
+                Math.max(1, queueLength - idleAgentCount), // En az 1 agent oluştur
+                maxAgents - agents.size()
+            );
 
             if (agentsToCreate > 0) {
                 logger.info("Scaling up agent pool: creating {} new agents. Queue size: {}, Idle agents: {}",
@@ -178,8 +220,35 @@ public class AgentPoolService {
                 }
             }
         }
-        // Scale down if queue is small and we have more than min agents
-        else if (queueLength <= scaleDownThreshold && idleAgentCount > minAgents) {
+    }
+
+    /**
+     * Agent havuzunu küçült
+     */
+    public void scaleDown() {
+        // Get current queue status
+        TestQueueService.QueueStatus queueStatus = testQueueService.getQueueStatus();
+        int queueLength = queueStatus.getLength();
+
+        // Count idle agents
+        int idleAgentCount = 0;
+        for (Agent agent : agents.values()) {
+            if (agent.getStatus() == AgentStatus.IDLE) {
+                idleAgentCount++;
+            }
+        }
+
+        scaleDown(queueLength, idleAgentCount);
+    }
+
+    /**
+     * Agent havuzunu küçült
+     * @param queueLength Kuyruk uzunluğu
+     * @param idleAgentCount Boşta agent sayısı
+     */
+    private void scaleDown(int queueLength, int idleAgentCount) {
+        // Scale down if we have more than min agents
+        if (idleAgentCount > minAgents) {
             int agentsToRemove = idleAgentCount - minAgents;
 
             if (agentsToRemove > 0) {
@@ -204,10 +273,6 @@ public class AgentPoolService {
                 }
             }
         }
-
-        // Log current pool status
-        logger.debug("Agent pool status: Total: {}, Min: {}, Max: {}, Queue size: {}",
-                agents.size(), minAgents, maxAgents, queueLength);
     }
 
     public Agent getIdleAgent() {
@@ -224,6 +289,15 @@ public class AgentPoolService {
         }
 
         return null;
+    }
+
+    /**
+     * Boşta bir agent ID'si al
+     * @return Boşta agent ID'si veya null
+     */
+    public String getIdleAgentId() {
+        Agent agent = getIdleAgent();
+        return agent != null ? agent.getId() : null;
     }
 
     public boolean resetAgent(String agentId) {

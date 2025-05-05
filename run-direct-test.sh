@@ -19,7 +19,7 @@ TEST_JSON=$(cat src/main/resources/example-test.json)
 TEST_REQUEST=$(cat <<EOF
 {
   "test": $TEST_JSON,
-  "async": false,
+  "async": true,
   "agentId": "$AGENT_ID"
 }
 EOF

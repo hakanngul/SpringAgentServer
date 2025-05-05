@@ -1,16 +1,35 @@
 #!/bin/bash
 
-# Agent kaydı yap ve agent ID'sini al
-echo "Agent kaydı yapılıyor..."
-AGENT_RESPONSE=$(curl -s -X POST http://localhost:8080/api/agents/register -H "Content-Type: application/json")
-AGENT_ID=$(echo $AGENT_RESPONSE | grep -o '"agentId":"[^"]*' | cut -d'"' -f4)
+# Otomatik agent yönetimi kullanılıyor, agent kaydı yapmaya gerek yok
+echo "Otomatik agent yönetimi kullanılıyor..."
 
-if [ -z "$AGENT_ID" ]; then
-    echo "Agent ID alınamadı. Sunucu çalışıyor mu?"
-    exit 1
+# Agent havuzunun durumunu kontrol et
+echo "Agent havuzu durumu kontrol ediliyor..."
+POOL_STATUS=$(curl -s -X GET http://localhost:8080/api/agents/pool/status -H "Content-Type: application/json")
+
+# JSON işleme için jq kullanılabilir, ancak varsayılan olarak yüklü olmayabilir
+# Bu nedenle basit bir kontrol yapalım
+if [ -z "$POOL_STATUS" ]; then
+    echo "Agent havuzu durumu alınamadı. Sunucu çalışıyor mu?"
+    TOTAL_AGENTS="?"
+    IDLE_AGENTS="?"
+else
+    # Basit bir grep ile değerleri çıkarmaya çalışalım
+    TOTAL_AGENTS=$(echo $POOL_STATUS | grep -o '"totalAgents":[0-9]*' | grep -o '[0-9]*')
+    IDLE_AGENTS=$(echo $POOL_STATUS | grep -o '"idleAgents":[0-9]*' | grep -o '[0-9]*')
+
+    # Değerler boşsa varsayılan değerler ata
+    if [ -z "$TOTAL_AGENTS" ]; then TOTAL_AGENTS="?"; fi
+    if [ -z "$IDLE_AGENTS" ]; then IDLE_AGENTS="?"; fi
 fi
 
-echo "Agent ID: $AGENT_ID"
+echo "Toplam agent sayısı: $TOTAL_AGENTS"
+echo "Boşta agent sayısı: $IDLE_AGENTS"
+
+# Boşta agent kontrolü (sadece sayısal değer ise)
+if [[ "$IDLE_AGENTS" =~ ^[0-9]+$ ]] && [ "$IDLE_AGENTS" -eq "0" ]; then
+    echo "Boşta agent yok, test otomatik olarak kuyruğa alınacak..."
+fi
 
 # Test dosyasını gönder ve test ID'sini al
 echo "Test oluşturuluyor..."
@@ -24,9 +43,13 @@ fi
 
 echo "Test ID: $TEST_ID"
 
-# Testi çalıştır
+# Testi çalıştır (otomatik agent atama ile)
 echo "Test çalıştırılıyor..."
-curl -X POST "http://localhost:8080/api/tests/$TEST_ID/run?agentId=$AGENT_ID" -H "Content-Type: application/json"
+curl -X POST "http://localhost:8080/api/tests/$TEST_ID/run-auto" -H "Content-Type: application/json"
 
 echo -e "\nTest başlatıldı. Sonuçları kontrol etmek için:"
 echo "curl -X GET http://localhost:8080/api/tests/$TEST_ID -H \"Content-Type: application/json\""
+
+# Test kuyruğu durumunu kontrol et
+echo -e "\nTest kuyruğu durumu kontrol ediliyor..."
+curl -s -X GET http://localhost:8080/api/tests/queue/status -H "Content-Type: application/json"

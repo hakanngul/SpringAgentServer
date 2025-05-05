@@ -3,12 +3,16 @@ package com.testautomation.service.core;
 import com.testautomation.model.Test;
 import com.testautomation.model.TestRequest;
 import com.testautomation.model.TestResult;
+import com.testautomation.model.enums.AgentStatus;
 import com.testautomation.model.enums.TestStatus;
+import com.testautomation.repository.AgentRepository;
 import com.testautomation.repository.TestRepository;
 import com.testautomation.repository.TestResultRepository;
 import com.testautomation.service.runners.TestRunner;
 import com.testautomation.service.websocket.WebSocketService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -18,10 +22,13 @@ import java.util.concurrent.CompletableFuture;
 @Service
 @RequiredArgsConstructor
 public class TestService {
+    private static final Logger logger = LoggerFactory.getLogger(TestService.class);
+
     private final TestRepository testRepository;
     private final TestResultRepository testResultRepository;
     private final TestRunner testRunner;
     private final WebSocketService webSocketService;
+    private final AgentPoolService agentPoolService;
 
     public Test createTest(Test test) {
         test.setCreatedAt(LocalDateTime.now());
@@ -151,5 +158,45 @@ public class TestService {
 
     public List<TestResult> getTestResults(String testId) {
         return testResultRepository.findByTestId(testId);
+    }
+
+    /**
+     * Otomatik agent atama ile test çalıştır
+     * @param testId Test ID
+     * @return Test sonucu
+     */
+    public CompletableFuture<TestResult> runTestWithAutoAgent(String testId) {
+        Optional<Test> optionalTest = testRepository.findById(testId);
+
+        if (optionalTest.isPresent()) {
+            Test test = optionalTest.get();
+
+            // Agent havuzundan boşta bir agent al
+            String agentId = agentPoolService.getIdleAgentId();
+
+            if (agentId != null) {
+                logger.info("Boşta agent bulundu: {}", agentId);
+                return runTest(testId, agentId);
+            } else {
+                // Boşta agent yoksa, testi kuyruğa al
+                logger.info("Boşta agent bulunamadı, test kuyruğa alınıyor: {}", testId);
+                test.updateStatus(TestStatus.QUEUED, Map.of("message", "Waiting for available agent"));
+                testRepository.save(test);
+                webSocketService.sendTestStatus(test);
+
+                // Yeni agent oluşturma isteği gönder
+                agentPoolService.scaleUp();
+
+                // CompletableFuture oluştur ve döndür
+                CompletableFuture<TestResult> future = new CompletableFuture<>();
+
+                // Tamamlanmamış future döndür, test çalıştırıldığında tamamlanacak
+                return future;
+            }
+        } else {
+            CompletableFuture<TestResult> future = new CompletableFuture<>();
+            future.completeExceptionally(new RuntimeException("Test not found with ID: " + testId));
+            return future;
+        }
     }
 }
