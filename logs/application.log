@@ -1,0 +1,554 @@
+2025-05-05 22:56:23 [main] INFO  c.t.TestAutomationApplication - Starting TestAutomationApplication using Java 11.0.27 on Hakan-MacBook-Pro.local with PID 29395 (/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main started by hakangul in /Users/hakangul/IdeaProjects/AgentServer)
+2025-05-05 22:56:23 [main] DEBUG c.t.TestAutomationApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-05-05 22:56:23 [main] INFO  c.t.TestAutomationApplication - The following 1 profile is active: "dev"
+2025-05-05 22:56:24 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-05-05 22:56:24 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 6 MongoDB repository interfaces.
+2025-05-05 22:56:24 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-05-05 22:56:24 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 5 ms. Found 6 MongoDB repository interfaces.
+2025-05-05 22:56:24 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-05-05 22:56:24 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-05 22:56:24 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+2025-05-05 22:56:24 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-05 22:56:24 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 612 ms
+2025-05-05 22:56:24 [main] INFO  c.testautomation.config.MongoConfig - MongoDB bağlantısı oluşturuluyor: mongodb://admin:*****@localhost:27017/automation_framework?authSource=admin
+2025-05-05 22:56:24 [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync", "version": "4.6.1"}, "os": {"type": "Darwin", "name": "Mac OS X", "architecture": "aarch64", "version": "15.4.1"}, "platform": "Java/Homebrew/11.0.27+0"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@5a1dddba]}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=5000, readTimeoutMS=5000, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=5000, readTimeoutMS=5000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=20, minSize=0, maxWaitTimeMS=5000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=60000, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+2025-05-05 22:56:24 [cluster-ClusterId{value='681917e83bdff54545b4f706', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:423}] to localhost:27017
+2025-05-05 22:56:24 [cluster-rtt-ClusterId{value='681917e83bdff54545b4f706', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:424}] to localhost:27017
+2025-05-05 22:56:24 [cluster-ClusterId{value='681917e83bdff54545b4f706', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=85255292}
+2025-05-05 22:56:24 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentController' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/controller/AgentController.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentPoolService' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/service/core/AgentPoolService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+2025-05-05 22:56:24 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-05-05 22:56:24 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-05-05 22:56:24 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentController' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/controller/AgentController.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentPoolService' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/service/core/AgentPoolService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:801)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:224)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:929)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:591)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:409)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
+	at com.testautomation.TestAutomationApplication.main(TestAutomationApplication.java:16)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentPoolService' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/service/core/AgentPoolService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:801)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:224)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:911)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:713)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:693)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:408)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:911)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	... 33 common frames omitted
+Caused by: org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:79)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1339)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:710)
+	... 48 common frames omitted
+Caused by: java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Long.parseLong(Long.java:692)
+	at java.base/java.lang.Long.valueOf(Long.java:1144)
+	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:214)
+	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:115)
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429)
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402)
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155)
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:73)
+	... 51 common frames omitted
+2025-05-05 22:56:43 [main] INFO  c.t.TestAutomationApplication - Starting TestAutomationApplication using Java 11.0.27 on Hakan-MacBook-Pro.local with PID 29563 (/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main started by hakangul in /Users/hakangul/IdeaProjects/AgentServer)
+2025-05-05 22:56:43 [main] DEBUG c.t.TestAutomationApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-05-05 22:56:43 [main] INFO  c.t.TestAutomationApplication - The following 1 profile is active: "dev"
+2025-05-05 22:56:43 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-05-05 22:56:43 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 6 MongoDB repository interfaces.
+2025-05-05 22:56:43 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-05-05 22:56:43 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 6 MongoDB repository interfaces.
+2025-05-05 22:56:43 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-05-05 22:56:43 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-05 22:56:43 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+2025-05-05 22:56:43 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-05 22:56:43 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 726 ms
+2025-05-05 22:56:44 [main] INFO  c.testautomation.config.MongoConfig - MongoDB bağlantısı oluşturuluyor: mongodb://admin:*****@localhost:27017/automation_framework?authSource=admin
+2025-05-05 22:56:44 [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync", "version": "4.6.1"}, "os": {"type": "Darwin", "name": "Mac OS X", "architecture": "aarch64", "version": "15.4.1"}, "platform": "Java/Homebrew/11.0.27+0"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@2ee39e73]}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=5000, readTimeoutMS=5000, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=5000, readTimeoutMS=5000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=20, minSize=0, maxWaitTimeMS=5000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=60000, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+2025-05-05 22:56:44 [cluster-ClusterId{value='681917fc1da6ca2240971e54', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:425}] to localhost:27017
+2025-05-05 22:56:44 [cluster-rtt-ClusterId{value='681917fc1da6ca2240971e54', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:426}] to localhost:27017
+2025-05-05 22:56:44 [cluster-ClusterId{value='681917fc1da6ca2240971e54', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=13661542}
+2025-05-05 22:56:44 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentController' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/controller/AgentController.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentPoolService' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/service/core/AgentPoolService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+2025-05-05 22:56:44 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-05-05 22:56:44 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-05-05 22:56:44 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentController' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/controller/AgentController.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentPoolService' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/service/core/AgentPoolService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:801)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:224)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:929)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:591)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:409)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
+	at com.testautomation.TestAutomationApplication.main(TestAutomationApplication.java:16)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentPoolService' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/service/core/AgentPoolService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:801)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:224)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:911)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:713)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:693)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:408)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:911)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	... 33 common frames omitted
+Caused by: org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:79)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1339)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:710)
+	... 48 common frames omitted
+Caused by: java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Long.parseLong(Long.java:692)
+	at java.base/java.lang.Long.valueOf(Long.java:1144)
+	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:214)
+	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:115)
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429)
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402)
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155)
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:73)
+	... 51 common frames omitted
+2025-05-05 22:58:26 [main] INFO  c.t.TestAutomationApplication - Starting TestAutomationApplication using Java 11.0.27 on Hakan-MacBook-Pro.local with PID 30471 (/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main started by hakangul in /Users/hakangul/IdeaProjects/AgentServer)
+2025-05-05 22:58:26 [main] DEBUG c.t.TestAutomationApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-05-05 22:58:26 [main] INFO  c.t.TestAutomationApplication - The following 1 profile is active: "dev"
+2025-05-05 22:58:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-05-05 22:58:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 39 ms. Found 6 MongoDB repository interfaces.
+2025-05-05 22:58:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-05-05 22:58:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 6 MongoDB repository interfaces.
+2025-05-05 22:58:27 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-05-05 22:58:27 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-05 22:58:27 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+2025-05-05 22:58:27 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-05 22:58:27 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 926 ms
+2025-05-05 22:58:27 [main] INFO  c.testautomation.config.MongoConfig - MongoDB bağlantısı oluşturuluyor: mongodb://admin:*****@localhost:27017/automation_framework?authSource=admin
+2025-05-05 22:58:27 [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync", "version": "4.6.1"}, "os": {"type": "Darwin", "name": "Mac OS X", "architecture": "aarch64", "version": "15.4.1"}, "platform": "Java/Homebrew/11.0.27+0"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@1a9ec80e]}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=5000, readTimeoutMS=5000, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=5000, readTimeoutMS=5000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=20, minSize=0, maxWaitTimeMS=5000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=60000, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+2025-05-05 22:58:27 [cluster-ClusterId{value='68191863b0a6744b97b616b9', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:427}] to localhost:27017
+2025-05-05 22:58:27 [cluster-ClusterId{value='68191863b0a6744b97b616b9', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=163194125}
+2025-05-05 22:58:27 [cluster-rtt-ClusterId{value='68191863b0a6744b97b616b9', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:428}] to localhost:27017
+2025-05-05 22:58:27 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentController' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/controller/AgentController.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentPoolService' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/service/core/AgentPoolService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+2025-05-05 22:58:27 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-05-05 22:58:27 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-05-05 22:58:27 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentController' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/controller/AgentController.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentPoolService' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/service/core/AgentPoolService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:801)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:224)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:929)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:591)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:409)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
+	at com.testautomation.TestAutomationApplication.main(TestAutomationApplication.java:16)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'agentPoolService' defined in file [/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main/com/testautomation/service/core/AgentPoolService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:801)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:224)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:911)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'testQueueService': Unsatisfied dependency expressed through field 'timeout'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:713)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:693)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:408)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:911)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	... 33 common frames omitted
+Caused by: org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:79)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1339)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:710)
+	... 48 common frames omitted
+Caused by: java.lang.NumberFormatException: For input string: "900000#15dakika"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Long.parseLong(Long.java:692)
+	at java.base/java.lang.Long.valueOf(Long.java:1144)
+	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:214)
+	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:115)
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429)
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402)
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155)
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:73)
+	... 51 common frames omitted
+2025-05-05 22:59:45 [main] INFO  c.t.TestAutomationApplication - Starting TestAutomationApplication using Java 11.0.27 on Hakan-MacBook-Pro.local with PID 31014 (/Users/hakangul/IdeaProjects/AgentServer/build/classes/java/main started by hakangul in /Users/hakangul/IdeaProjects/AgentServer)
+2025-05-05 22:59:45 [main] DEBUG c.t.TestAutomationApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-05-05 22:59:45 [main] INFO  c.t.TestAutomationApplication - The following 1 profile is active: "dev"
+2025-05-05 22:59:45 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-05-05 22:59:45 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 6 MongoDB repository interfaces.
+2025-05-05 22:59:45 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-05-05 22:59:45 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 6 MongoDB repository interfaces.
+2025-05-05 22:59:45 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-05-05 22:59:45 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-05 22:59:45 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.83]
+2025-05-05 22:59:45 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-05 22:59:45 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 921 ms
+2025-05-05 22:59:46 [main] INFO  c.testautomation.config.MongoConfig - MongoDB bağlantısı oluşturuluyor: mongodb://admin:*****@localhost:27017/automation_framework?authSource=admin
+2025-05-05 22:59:46 [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync", "version": "4.6.1"}, "os": {"type": "Darwin", "name": "Mac OS X", "architecture": "aarch64", "version": "15.4.1"}, "platform": "Java/Homebrew/11.0.27+0"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@c4d2c44]}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=5000, readTimeoutMS=5000, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=5000, readTimeoutMS=5000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=20, minSize=0, maxWaitTimeMS=5000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=60000, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+2025-05-05 22:59:46 [cluster-ClusterId{value='681918b21e7edf0d98fea1ed', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:430}] to localhost:27017
+2025-05-05 22:59:46 [cluster-rtt-ClusterId{value='681918b21e7edf0d98fea1ed', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:429}] to localhost:27017
+2025-05-05 22:59:46 [cluster-ClusterId{value='681918b21e7edf0d98fea1ed', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=40343167}
+2025-05-05 22:59:46 [main] INFO  c.t.service.core.AgentPoolService - Initializing agent pool with 2 minimum agents
+2025-05-05 22:59:46 [main] DEBUG o.s.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, status, lastActivity, createdAt, updatedAt, _class]
+2025-05-05 22:59:46 [main] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:3, serverValue:431}] to localhost:27017
+2025-05-05 22:59:47 [main] INFO  c.t.service.core.AgentPoolService - Agent saved to database: 1150186e-c570-45df-8907-0ae3ca983b4c
+2025-05-05 22:59:47 [main] INFO  c.t.service.core.AgentPoolService - New agent created: 1150186e-c570-45df-8907-0ae3ca983b4c
+2025-05-05 22:59:47 [main] DEBUG o.s.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, status, lastActivity, createdAt, updatedAt, _class]
+2025-05-05 22:59:47 [main] INFO  c.t.service.core.AgentPoolService - Agent saved to database: 1e9f4df8-9bfd-4106-9bf4-93db11002be0
+2025-05-05 22:59:47 [main] INFO  c.t.service.core.AgentPoolService - New agent created: 1e9f4df8-9bfd-4106-9bf4-93db11002be0
+2025-05-05 22:59:47 [main] INFO  c.t.service.core.AutoScalerService - Auto Scaler Service başlatıldı
+2025-05-05 22:59:47 [main] INFO  c.t.service.core.AutoScalerService - Otomatik ölçeklendirme: Etkin
+2025-05-05 22:59:47 [main] INFO  c.t.service.core.AutoScalerService - Auto Scaler Service başlatılıyor...
+2025-05-05 22:59:47 [main] INFO  c.t.service.core.AutoScalerService - Otomatik ölçeklendirme seçenekleri: AutoScalerOptions{enabled=true, checkInterval=5000, minAgents=2, maxAgents=5, scaleUpThreshold=1, scaleDownThreshold=0, scaleUpStep=1, scaleDownStep=1}
+2025-05-05 22:59:47 [main] INFO  com.testautomation.config.AppConfig - Ekran görüntüleri dizini yapılandırılıyor: /Users/hakangul/agentUtils/screenshots/dev
+2025-05-05 22:59:47 [main] INFO  com.testautomation.config.AppConfig - Ekran görüntüleri dizini oluşturuldu: /Users/hakangul/agentUtils/screenshots/dev
+2025-05-05 22:59:47 [main] INFO  com.testautomation.config.AppConfig - Görev yürütücüsü yapılandırılıyor: core=5, max=10, queue=25
+2025-05-05 22:59:47 [main] INFO  com.testautomation.config.AppConfig - Görev zamanlayıcısı yapılandırılıyor: poolSize=5
+2025-05-05 22:59:47 [main] INFO  com.testautomation.config.AppConfig - Raporlar dizini yapılandırılıyor: /Users/hakangul/agentUtils/reports/dev
+2025-05-05 22:59:47 [main] INFO  com.testautomation.config.AppConfig - Raporlar dizini oluşturuldu: /Users/hakangul/agentUtils/reports/dev
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.s.s.WebSocketHandlerMapping - Patterns [/ws/**] in 'stompWebSocketHandlerMapping'
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.t.c.AgentController:
+	
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.t.c.AutoScalerController:
+	
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.t.c.ReportController:
+	
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.t.c.TestController:
+	
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.t.c.TestQueueController:
+	
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	c.t.c.TestSuiteController:
+	
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	o.s.w.a.OpenApiWebMvcResource:
+	
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	o.s.w.u.SwaggerWelcomeWebMvc:
+	
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.WebSocketAnnotationMethodMessageHandler - 
+	o.s.w.u.SwaggerConfigResource:
+	
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 40 mappings in 'requestMappingHandlerMapping'
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2025-05-05 22:59:47 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-05-05 22:59:47 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-05-05 22:59:47 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-05-05 22:59:47 [main] DEBUG org.springframework.web.SimpLogging - clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2025-05-05 22:59:47 [main] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[/app/]]
+2025-05-05 22:59:47 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2025-05-05 22:59:47 [main] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@27dc81be]
+2025-05-05 22:59:47 [main] DEBUG org.springframework.web.SimpLogging - brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@27dc81be]
+2025-05-05 22:59:47 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@27dc81be]]
+2025-05-05 22:59:47 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2025-05-05 22:59:47 [main] DEBUG org.springframework.web.SimpLogging - clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2025-05-05 22:59:47 [main] DEBUG org.springframework.web.SimpLogging - brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2025-05-05 22:59:47 [Scheduler-2] INFO  c.t.service.core.AgentPoolService - Agents ready for testing...
+2025-05-05 22:59:47 [Scheduler-1] DEBUG c.t.service.core.AgentPoolService - Agent pool status: Total: 2, Min: 2, Max: 5, Queue size: 0
+2025-05-05 22:59:47 [main] INFO  c.testautomation.config.MongoConfig - Veritabanı koleksiyonları ve indeksleri başlatılıyor...
+2025-05-05 22:59:47 [main] INFO  c.testautomation.config.MongoConfig - Aktif profiller: [dev]
+2025-05-05 22:59:47 [main] INFO  c.testautomation.config.MongoConfig - MongoDB bağlantısı oluşturuluyor: mongodb://admin:*****@localhost:27017/automation_framework?authSource=admin
+2025-05-05 22:59:47 [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync", "version": "4.6.1"}, "os": {"type": "Darwin", "name": "Mac OS X", "architecture": "aarch64", "version": "15.4.1"}, "platform": "Java/Homebrew/11.0.27+0"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@c4d2c44]}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=5000, readTimeoutMS=5000, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=5000, readTimeoutMS=5000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=20, minSize=0, maxWaitTimeMS=5000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=60000, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+2025-05-05 22:59:47 [main] INFO  org.mongodb.driver.cluster - Cluster description not yet available. Waiting for 30000 ms before timing out
+2025-05-05 22:59:47 [cluster-ClusterId{value='681918b31e7edf0d98fea1ee', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:4, serverValue:433}] to localhost:27017
+2025-05-05 22:59:47 [cluster-ClusterId{value='681918b31e7edf0d98fea1ee', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=10123792}
+2025-05-05 22:59:47 [cluster-rtt-ClusterId{value='681918b31e7edf0d98fea1ee', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:5, serverValue:432}] to localhost:27017
+2025-05-05 22:59:47 [main] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:6, serverValue:434}] to localhost:27017
+2025-05-05 22:59:47 [main] INFO  c.testautomation.config.MongoConfig - Koleksiyon oluşturuluyor: test_suites
+2025-05-05 22:59:48 [main] DEBUG o.s.data.mongodb.core.MongoTemplate - Created collection [test_suites]
+2025-05-05 22:59:48 [main] INFO  c.testautomation.config.MongoConfig - Koleksiyon oluşturuluyor: test_suite_results
+2025-05-05 22:59:48 [main] DEBUG o.s.data.mongodb.core.MongoTemplate - Created collection [test_suite_results]
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks zaten var veya oluşturulamadı: status_index (tests): Command failed with error 85 (IndexOptionsConflict): 'Index already exists with a different name: status_1' on server localhost:27017. The full response is {"ok": 0.0, "errmsg": "Index already exists with a different name: status_1", "code": 85, "codeName": "IndexOptionsConflict"}
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks zaten var veya oluşturulamadı: agentId_index (tests): Command failed with error 85 (IndexOptionsConflict): 'Index already exists with a different name: agentId_1' on server localhost:27017. The full response is {"ok": 0.0, "errmsg": "Index already exists with a different name: agentId_1", "code": 85, "codeName": "IndexOptionsConflict"}
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: createdAt_index (tests)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: tags_index (tests)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks zaten var veya oluşturulamadı: testId_index (test_results): Command failed with error 85 (IndexOptionsConflict): 'Index already exists with a different name: testId_1' on server localhost:27017. The full response is {"ok": 0.0, "errmsg": "Index already exists with a different name: testId_1", "code": 85, "codeName": "IndexOptionsConflict"}
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks zaten var veya oluşturulamadı: agentId_index (test_results): Command failed with error 85 (IndexOptionsConflict): 'Index already exists with a different name: agentId_1' on server localhost:27017. The full response is {"ok": 0.0, "errmsg": "Index already exists with a different name: agentId_1", "code": 85, "codeName": "IndexOptionsConflict"}
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: createdAt_index (test_results)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks zaten var veya oluşturulamadı: testId_index (logs): Command failed with error 85 (IndexOptionsConflict): 'Index already exists with a different name: testId_1' on server localhost:27017. The full response is {"ok": 0.0, "errmsg": "Index already exists with a different name: testId_1", "code": 85, "codeName": "IndexOptionsConflict"}
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks zaten var veya oluşturulamadı: agentId_index (logs): Command failed with error 85 (IndexOptionsConflict): 'Index already exists with a different name: agentId_1' on server localhost:27017. The full response is {"ok": 0.0, "errmsg": "Index already exists with a different name: agentId_1", "code": 85, "codeName": "IndexOptionsConflict"}
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks zaten var veya oluşturulamadı: timestamp_index (logs): Command failed with error 85 (IndexOptionsConflict): 'Index already exists with a different name: timestamp_1' on server localhost:27017. The full response is {"ok": 0.0, "errmsg": "Index already exists with a different name: timestamp_1", "code": 85, "codeName": "IndexOptionsConflict"}
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: level_index (logs)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: status_index (agents)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: lastActivity_index (agents)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: status_index (test_suites)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: createdAt_index (test_suites)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: tags_index (test_suites)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: suiteId_index (test_suite_results)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: status_index (test_suite_results)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: createdAt_index (test_suite_results)
+2025-05-05 22:59:48 [main] DEBUG c.testautomation.config.MongoConfig - İndeks oluşturuldu: agentId_index (test_suite_results)
+2025-05-05 22:59:48 [main] INFO  c.testautomation.config.MongoConfig - Veritabanı başlatma tamamlandı: automation_framework
+2025-05-05 22:59:49 [main] INFO  c.t.TestAutomationApplication - Started TestAutomationApplication in 4.523 seconds (JVM running for 4.751)
+2025-05-05 23:00:17 [Scheduler-2] DEBUG c.t.service.core.AgentPoolService - Agent pool status: Total: 2, Min: 2, Max: 5, Queue size: 0
+2025-05-05 23:00:21 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-05 23:00:21 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-05 23:00:21 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2025-05-05 23:00:21 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2025-05-05 23:00:21 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2025-05-05 23:00:21 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@4470106b
+2025-05-05 23:00:21 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@5f3f57ff
+2025-05-05 23:00:21 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-05-05 23:00:21 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 20 ms
+2025-05-05 23:00:21 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api/agents/pool/status", parameters={}
+2025-05-05 23:00:21 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.testautomation.controller.AgentController#getPoolStatus()
+2025-05-05 23:00:21 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-05-05 23:00:21 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.testautomation.service.core.AgentPoolService$PoolStatus@2548858]
+2025-05-05 23:00:21 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-05-05 23:00:21 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api/agents/pool/status", parameters={}
+2025-05-05 23:00:21 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.testautomation.controller.AgentController#getPoolStatus()
+2025-05-05 23:00:21 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-05-05 23:00:21 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.testautomation.service.core.AgentPoolService$PoolStatus@3c264a1d]
+2025-05-05 23:00:21 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-05-05 23:00:21 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - POST "/api/tests", parameters={}
+2025-05-05 23:00:21 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.testautomation.controller.TestController#createTest(Test)
+2025-05-05 23:00:21 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [Test(id=null, name=ExpandTesting Login Testi, description=ExpandTesting practice sayfasında başarılı (truncated)...]
+2025-05-05 23:00:22 [http-nio-8080-exec-4] DEBUG o.s.data.mongodb.core.MongoTemplate - Inserting Document containing fields: [name, description, status, priority, category, tags, browserPreference, headless, takeScreenshots, browserFullScreen, browserOptions, steps, createdAt, metadata, preconditions, expectedResults, testContext, continueOnFailure, maxRetries, stepOptions, _class] in collection: tests
+2025-05-05 23:00:22 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-05-05 23:00:22 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [Test(id=681918d61e7edf0d98fea1ef, name=ExpandTesting Login Testi, description=ExpandTesting practice (truncated)...]
+2025-05-05 23:00:22 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 201 CREATED
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - POST "/api/tests/681918d61e7edf0d98fea1ef/run-auto", parameters={}
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.testautomation.controller.TestController#runTestWithAutoAgent(String)
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG o.s.data.mongodb.core.MongoTemplate - findOne using query: { "id" : "681918d61e7edf0d98fea1ef"} fields: Document{{}} for class: class com.testautomation.model.Test in collection: tests
+2025-05-05 23:00:22 [http-nio-8080-exec-5] INFO  c.t.service.core.TestService - Boşta agent bulundu: 1e9f4df8-9bfd-4106-9bf4-93db11002be0
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG o.s.data.mongodb.core.MongoTemplate - findOne using query: { "id" : "681918d61e7edf0d98fea1ef"} fields: Document{{}} for class: class com.testautomation.model.Test in collection: tests
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG o.s.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, name, description, status, priority, category, tags, browserPreference, headless, takeScreenshots, browserFullScreen, browserOptions, steps, createdAt, queuedAt, agentId, metadata, preconditions, expectedResults, testContext, continueOnFailure, maxRetries, stepOptions, _class]
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/status session=null payload={"id":"681918d61e7edf0d98fea1ef","name":"ExpandTesting Login Testi","description...(truncated)
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/status session=null payload={"id":"681918d61e7edf0d98fea1ef","name":"ExpandTesting Login Testi","description...(truncated)
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG o.s.data.mongodb.core.MongoTemplate - findOne using query: { "id" : "1e9f4df8-9bfd-4106-9bf4-93db11002be0"} fields: Document{{}} for class: class com.testautomation.model.Agent in collection: agents
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG o.s.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, status, lastActivity, createdAt, updatedAt, _class]
+2025-05-05 23:00:22 [http-nio-8080-exec-5] INFO  c.t.service.core.AgentService - Agent durumu güncellendi: 1e9f4df8-9bfd-4106-9bf4-93db11002be0 (BUSY)
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/agents/1e9f4df8-9bfd-4106-9bf4-93db11002be0/status session=null payload=BUSY
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/agents/status session=null payload={"agentId":"1e9f4df8-9bfd-4106-9bf4-93db11002be0","status":"BUSY"}
+2025-05-05 23:00:22 [ForkJoinPool.commonPool-worker-3] DEBUG o.s.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, name, description, status, priority, category, tags, browserPreference, headless, takeScreenshots, browserFullScreen, browserOptions, steps, createdAt, queuedAt, startedAt, agentId, metadata, preconditions, expectedResults, testContext, continueOnFailure, maxRetries, stepOptions, _class]
+2025-05-05 23:00:22 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/status session=null payload={"id":"681918d61e7edf0d98fea1ef","name":"ExpandTesting Login Testi","description...(truncated)
+2025-05-05 23:00:22 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/status session=null payload={"id":"681918d61e7edf0d98fea1ef","name":"ExpandTesting Login Testi","description...(truncated)
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [java.util.concurrent.CompletableFuture@354e02c3[Not completed]]
+2025-05-05 23:00:22 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 202 ACCEPTED
+2025-05-05 23:00:22 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/api/tests/queue/status", parameters={}
+2025-05-05 23:00:22 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.testautomation.controller.TestQueueController#getQueueStatus()
+2025-05-05 23:00:22 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-05-05 23:00:22 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.testautomation.service.core.TestQueueService$QueueStatus@38c5c484]
+2025-05-05 23:00:22 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-05-05 23:00:27 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"317f6097-bd8d-4016-9618-2a7a936c4a58","timestamp":"2025-05-05 23:00:27.69...(truncated)
+2025-05-05 23:00:29 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"b6e35dc8-1e35-443c-bec0-4ff10acf8f59","timestamp":"2025-05-05 23:00:29.10...(truncated)
+2025-05-05 23:00:29 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"43be0f34-a71a-4eaa-b2b0-c3f7279b43a2","timestamp":"2025-05-05 23:00:29.12...(truncated)
+2025-05-05 23:00:29 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"c02535b4-a619-413c-a3f3-0841d5bf83fe","timestamp":"2025-05-05 23:00:29.13...(truncated)
+2025-05-05 23:00:29 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"ddc346a2-94ee-4b98-834e-85e742ef182b","timestamp":"2025-05-05 23:00:29.14...(truncated)
+2025-05-05 23:00:29 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım çalıştırılıyor: navigate - Hedef: https://practice.expandtesting.com/login, Strateji: null, Değer: null
+2025-05-05 23:00:29 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.StepExecutor - URL'ye gidiliyor: https://practice.expandtesting.com/login
+2025-05-05 23:00:37 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.StepExecutor - URL'ye başarıyla gidildi
+2025-05-05 23:00:37 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım başarıyla tamamlandı: navigate
+2025-05-05 23:00:37 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"ea1bf8ab-6412-47af-96f8-8a611fcc1d1a","timestamp":"2025-05-05 23:00:37.64...(truncated)
+2025-05-05 23:00:37 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"fcecb656-b1b5-4e15-be5e-cdad5bbfcf1c","timestamp":"2025-05-05 23:00:37.68...(truncated)
+2025-05-05 23:00:37 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım çalıştırılıyor: wait - Hedef: null, Strateji: null, Değer: 500
+2025-05-05 23:00:37 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.StepExecutor - Bekleniyor: 500 ms
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.StepExecutor - Bekleme tamamlandı
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım başarıyla tamamlandı: wait
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"51f43883-5d6b-4ddd-a160-22e0032cc402","timestamp":"2025-05-05 23:00:38.20...(truncated)
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"97c32ce8-12f7-4330-9d18-5c1ac1436fbd","timestamp":"2025-05-05 23:00:38.20...(truncated)
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım çalıştırılıyor: type - Hedef: #username, Strateji: id, Değer: practice
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Elemente metin yazılıyor: #username (strateji: id), değer: practice
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] WARN  c.t.service.runners.ElementUtils - Geçersiz seçici stratejisi: id. CSS kullanılacak.
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Oluşturulan seçici: #username (strateji: CSS)
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Element aranıyor: #username
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Elemente başarıyla metin yazıldı
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım başarıyla tamamlandı: type
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"c41bebcc-457d-4b4b-a772-41e5a7d39575","timestamp":"2025-05-05 23:00:38.28...(truncated)
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"c01becd9-7402-43a2-aee0-e3119b1435ab","timestamp":"2025-05-05 23:00:38.28...(truncated)
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım çalıştırılıyor: wait - Hedef: null, Strateji: null, Değer: 500
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.StepExecutor - Bekleniyor: 500 ms
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.StepExecutor - Bekleme tamamlandı
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım başarıyla tamamlandı: wait
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"e485f795-5c3a-4bcd-9e9c-8e00ccf16496","timestamp":"2025-05-05 23:00:38.78...(truncated)
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"cbb922cb-18d6-49db-8e14-a3417161a020","timestamp":"2025-05-05 23:00:38.78...(truncated)
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım çalıştırılıyor: type - Hedef: #password, Strateji: id, Değer: SuperSecretPassword!
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Elemente metin yazılıyor: #password (strateji: id), değer: SuperSecretPassword!
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] WARN  c.t.service.runners.ElementUtils - Geçersiz seçici stratejisi: id. CSS kullanılacak.
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Oluşturulan seçici: #password (strateji: CSS)
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Element aranıyor: #password
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Elemente başarıyla metin yazıldı
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım başarıyla tamamlandı: type
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"4edcc8ce-92b6-4fc5-a7de-826ec86165b3","timestamp":"2025-05-05 23:00:38.86...(truncated)
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"fd83a001-d1b0-4f6d-ae9b-0eea14ab9655","timestamp":"2025-05-05 23:00:38.86...(truncated)
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım çalıştırılıyor: wait - Hedef: null, Strateji: null, Değer: 500
+2025-05-05 23:00:38 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.StepExecutor - Bekleniyor: 500 ms
+2025-05-05 23:00:39 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.StepExecutor - Bekleme tamamlandı
+2025-05-05 23:00:39 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım başarıyla tamamlandı: wait
+2025-05-05 23:00:39 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"da4ca222-0064-4d48-bf1d-917f38c72f18","timestamp":"2025-05-05 23:00:39.36...(truncated)
+2025-05-05 23:00:39 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"b34a3268-c076-4217-b4fd-cff6a6a96abc","timestamp":"2025-05-05 23:00:39.36...(truncated)
+2025-05-05 23:00:39 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım çalıştırılıyor: click - Hedef: button[type='submit'], Strateji: css, Değer: null
+2025-05-05 23:00:39 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Elemente tıklanıyor: button[type='submit'] (strateji: css)
+2025-05-05 23:00:39 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Oluşturulan seçici: button[type='submit'] (strateji: CSS)
+2025-05-05 23:00:39 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Element aranıyor: button[type='submit']
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - Elemente başarıyla tıklandı
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım başarıyla tamamlandı: click
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"f442da8c-8e75-47be-b6d6-4408a2348946","timestamp":"2025-05-05 23:00:40.55...(truncated)
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"4bf201cd-e376-4c5e-a430-ac7ad28b3f0e","timestamp":"2025-05-05 23:00:40.55...(truncated)
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım çalıştırılıyor: wait - Hedef: null, Strateji: null, Değer: 300
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.StepExecutor - Bekleniyor: 300 ms
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.StepExecutor - Bekleme tamamlandı
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım başarıyla tamamlandı: wait
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"7b5290cb-c00f-4734-8175-c6931fd2238b","timestamp":"2025-05-05 23:00:40.85...(truncated)
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/logs session=null payload={"id":"67dc6992-ae5a-4ca1-9bda-8babca9fe3ef","timestamp":"2025-05-05 23:00:40.86...(truncated)
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.runners.StepExecutor - Adım çalıştırılıyor: verifyUrl - Hedef: https://practice.expandtesting.com/secure-area, Strateji: null, Değer: null
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] DEBUG c.t.service.runners.ElementUtils - URL doğrulanıyor, beklenen: https://practice.expandtesting.com/secure-area
+2025-05-05 23:00:40 [ForkJoinPool.commonPool-worker-3] ERROR c.t.service.runners.ElementUtils - URL doğrulama başarısız: Beklenen 'https://practice.expandtesting.com/secure-area', Alınan 'https://practice.expandtesting.com/secure'
+2025-05-05 23:00:41 [ForkJoinPool.commonPool-worker-3] DEBUG o.s.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, testId, agentId, name, description, browserPreference, headless, takeScreenshots, browserFullScreen, startTime, endTime, duration, success, logs, screenshots, steps, _class]
+2025-05-05 23:00:41 [ForkJoinPool.commonPool-worker-3] DEBUG o.s.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, name, description, status, priority, category, tags, browserPreference, headless, takeScreenshots, browserFullScreen, browserOptions, steps, createdAt, queuedAt, startedAt, agentId, metadata, preconditions, expectedResults, testContext, continueOnFailure, maxRetries, stepOptions, _class]
+2025-05-05 23:00:41 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/status session=null payload={"id":"681918d61e7edf0d98fea1ef","name":"ExpandTesting Login Testi","description...(truncated)
+2025-05-05 23:00:41 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/status session=null payload={"id":"681918d61e7edf0d98fea1ef","name":"ExpandTesting Login Testi","description...(truncated)
+2025-05-05 23:00:41 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/681918d61e7edf0d98fea1ef/result session=null payload={"id":"358faafd-ff62-40f5-88c8-3929699208f2","testId":"681918d61e7edf0d98fea1ef"...(truncated)
+2025-05-05 23:00:41 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/tests/results session=null payload={"id":"358faafd-ff62-40f5-88c8-3929699208f2","testId":"681918d61e7edf0d98fea1ef"...(truncated)
+2025-05-05 23:00:41 [ForkJoinPool.commonPool-worker-3] DEBUG o.s.data.mongodb.core.MongoTemplate - findOne using query: { "id" : "1e9f4df8-9bfd-4106-9bf4-93db11002be0"} fields: Document{{}} for class: class com.testautomation.model.Agent in collection: agents
+2025-05-05 23:00:41 [ForkJoinPool.commonPool-worker-3] DEBUG o.s.data.mongodb.core.MongoTemplate - Saving Document containing fields: [_id, status, lastActivity, createdAt, updatedAt, _class]
+2025-05-05 23:00:41 [ForkJoinPool.commonPool-worker-3] INFO  c.t.service.core.AgentService - Agent durumu güncellendi: 1e9f4df8-9bfd-4106-9bf4-93db11002be0 (IDLE)
+2025-05-05 23:00:41 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/agents/1e9f4df8-9bfd-4106-9bf4-93db11002be0/status session=null payload=IDLE
+2025-05-05 23:00:41 [ForkJoinPool.commonPool-worker-3] DEBUG org.springframework.web.SimpLogging - Processing MESSAGE destination=/topic/agents/status session=null payload={"agentId":"1e9f4df8-9bfd-4106-9bf4-93db11002be0","status":"IDLE"}
+2025-05-05 23:00:47 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-05-05 23:00:47 [Scheduler-2] INFO  c.t.service.core.AgentPoolService - Agents ready for testing...
+2025-05-05 23:00:47 [Scheduler-3] DEBUG c.t.service.core.AgentPoolService - Agent pool status: Total: 2, Min: 2, Max: 5, Queue size: 0
+2025-05-05 23:01:17 [Scheduler-2] DEBUG c.t.service.core.AgentPoolService - Agent pool status: Total: 2, Min: 2, Max: 5, Queue size: 0
+2025-05-05 23:01:47 [Scheduler-1] DEBUG c.t.service.core.AgentPoolService - Agent pool status: Total: 2, Min: 2, Max: 5, Queue size: 0
+2025-05-05 23:01:47 [Scheduler-2] INFO  c.t.service.core.AgentPoolService - Agents ready for testing...
+2025-05-05 23:02:17 [Scheduler-3] DEBUG c.t.service.core.AgentPoolService - Agent pool status: Total: 2, Min: 2, Max: 5, Queue size: 0
+2025-05-05 23:02:47 [Scheduler-5] INFO  c.t.service.core.AgentPoolService - Agents ready for testing...
+2025-05-05 23:02:47 [Scheduler-3] DEBUG c.t.service.core.AgentPoolService - Agent pool status: Total: 2, Min: 2, Max: 5, Queue size: 0
+2025-05-05 23:03:17 [Scheduler-5] DEBUG c.t.service.core.AgentPoolService - Agent pool status: Total: 2, Min: 2, Max: 5, Queue size: 0
+2025-05-05 23:03:47 [Scheduler-5] INFO  c.t.service.core.AgentPoolService - Agents ready for testing...
+2025-05-05 23:03:47 [Scheduler-2] DEBUG c.t.service.core.AgentPoolService - Agent pool status: Total: 2, Min: 2, Max: 5, Queue size: 0
+2025-05-05 23:03:59 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientOutboundChannel removed SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2025-05-05 23:03:59 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed WebSocketAnnotationMethodMessageHandler[prefixes=[/app/]]
+2025-05-05 23:03:59 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2025-05-05 23:03:59 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@27dc81be]]
+2025-05-05 23:03:59 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@27dc81be]
+2025-05-05 23:03:59 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - brokerChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@27dc81be]
+2025-05-05 23:03:59 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2025-05-05 23:03:59 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - clientInboundChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2025-05-05 23:03:59 [SpringApplicationShutdownHook] DEBUG org.springframework.web.SimpLogging - brokerChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2025-05-05 23:04:00 [SpringApplicationShutdownHook] INFO  c.t.service.core.AutoScalerService - Auto Scaler Service kapatılıyor...

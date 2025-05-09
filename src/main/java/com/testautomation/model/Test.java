@@ -95,6 +95,11 @@ public class Test {
     private int maxRetries = 0;
 
     /**
+     * Step options for all steps in the test
+     */
+    private TestStepOptions stepOptions;
+
+    /**
      * Get browser options, creating default options if none exist
      */
     public BrowserOptions getBrowserOptions() {
@@ -116,6 +121,23 @@ public class Test {
             testContext = TestContext.builder().build();
         }
         return testContext;
+    }
+
+    /**
+     * Get step options, creating default options if none exist
+     */
+    public TestStepOptions getStepOptions() {
+        if (stepOptions == null) {
+            stepOptions = TestStepOptions.builder().build();
+        }
+        return stepOptions;
+    }
+
+    /**
+     * Set step options
+     */
+    public void setStepOptions(TestStepOptions stepOptions) {
+        this.stepOptions = stepOptions;
     }
 
     public void updateStatus(TestStatus status, Map<String, Object> data) {

@@ -72,7 +72,10 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
         MongoTemplate mongoTemplate = new MongoTemplate(mongoClient(), getDatabaseName());
 
         // Koleksiyonların varlığını kontrol et ve oluştur
-        List<String> collections = List.of("tests", "test_results", "logs", "agents");
+        List<String> collections = List.of(
+            "tests", "test_results", "logs", "agents",
+            "test_suites", "test_suite_results"
+        );
         for (String collection : collections) {
             if (!mongoTemplate.collectionExists(collection)) {
                 logger.info("Koleksiyon oluşturuluyor: {}", collection);
@@ -95,6 +98,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
         createIndex(mongoTemplate, "tests", Indexes.ascending("status"), "status_index");
         createIndex(mongoTemplate, "tests", Indexes.ascending("agentId"), "agentId_index");
         createIndex(mongoTemplate, "tests", Indexes.ascending("createdAt"), "createdAt_index");
+        createIndex(mongoTemplate, "tests", Indexes.ascending("tags"), "tags_index");
 
         // Test results koleksiyonu indeksleri
         createIndex(mongoTemplate, "test_results", Indexes.ascending("testId"), "testId_index");
@@ -110,6 +114,17 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
         // Agents koleksiyonu indeksleri
         createIndex(mongoTemplate, "agents", Indexes.ascending("status"), "status_index");
         createIndex(mongoTemplate, "agents", Indexes.ascending("lastActivity"), "lastActivity_index");
+
+        // Test Suites koleksiyonu indeksleri
+        createIndex(mongoTemplate, "test_suites", Indexes.ascending("status"), "status_index");
+        createIndex(mongoTemplate, "test_suites", Indexes.ascending("createdAt"), "createdAt_index");
+        createIndex(mongoTemplate, "test_suites", Indexes.ascending("tags"), "tags_index");
+
+        // Test Suite Results koleksiyonu indeksleri
+        createIndex(mongoTemplate, "test_suite_results", Indexes.ascending("suiteId"), "suiteId_index");
+        createIndex(mongoTemplate, "test_suite_results", Indexes.ascending("status"), "status_index");
+        createIndex(mongoTemplate, "test_suite_results", Indexes.ascending("createdAt"), "createdAt_index");
+        createIndex(mongoTemplate, "test_suite_results", Indexes.ascending("agentId"), "agentId_index");
     }
 
     /**

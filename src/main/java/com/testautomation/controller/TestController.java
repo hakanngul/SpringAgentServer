@@ -103,7 +103,7 @@ public class TestController {
     public ResponseEntity<CompletableFuture<TestResult>> runTestWithAutoAgent(
         @PathVariable String id
     ) {
-        CompletableFuture<TestResult> future = testService.runTestWithAutoAgent(id);
+        CompletableFuture<TestResult> future = testService.runTestAuto(id);
         return ResponseEntity.accepted().body(future);
     }
 

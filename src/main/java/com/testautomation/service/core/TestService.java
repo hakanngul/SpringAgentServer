@@ -165,7 +165,7 @@ public class TestService {
      * @param testId Test ID
      * @return Test sonucu
      */
-    public CompletableFuture<TestResult> runTestWithAutoAgent(String testId) {
+    public CompletableFuture<TestResult> runTestAuto(String testId) {
         Optional<Test> optionalTest = testRepository.findById(testId);
 
         if (optionalTest.isPresent()) {

@@ -3,6 +3,8 @@ package com.testautomation.service.websocket;
 import com.testautomation.model.LogEntry;
 import com.testautomation.model.Test;
 import com.testautomation.model.TestResult;
+import com.testautomation.model.TestSuite;
+import com.testautomation.model.TestSuiteResult;
 import com.testautomation.service.core.AutoScalerService.AutoScalerOptions;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -52,6 +54,24 @@ public class WebSocketService {
     public void sendAutoScalerEvent(String eventType, Map<String, Object> data) {
         messagingTemplate.convertAndSend("/topic/autoscaler/events",
             new AutoScalerEventMessage(eventType, data));
+    }
+
+    /**
+     * Test Suite durumunu gönderir
+     * @param testSuite Test Suite
+     */
+    public void sendTestSuiteStatus(TestSuite testSuite) {
+        messagingTemplate.convertAndSend("/topic/test-suites/" + testSuite.getId() + "/status", testSuite);
+        messagingTemplate.convertAndSend("/topic/test-suites/status", testSuite);
+    }
+
+    /**
+     * Test Suite sonucunu gönderir
+     * @param result Test Suite sonucu
+     */
+    public void sendTestSuiteResult(TestSuiteResult result) {
+        messagingTemplate.convertAndSend("/topic/test-suites/" + result.getSuiteId() + "/result", result);
+        messagingTemplate.convertAndSend("/topic/test-suites/results", result);
     }
 
     @Getter

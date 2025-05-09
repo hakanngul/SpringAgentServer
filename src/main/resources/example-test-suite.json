@@ -1,0 +1,188 @@
+{
+  "name": "Login Test Suite",
+  "description": "Login işlemlerini test eden test suite",
+  "tags": ["login", "authentication"],
+  "configuration": {
+    "browserPreference": "chromium",
+    "headless": true,
+    "takeScreenshots": false,
+    "browserFullScreen": true,
+    "continueOnFailure": true,
+    "stepOptions": {
+      "delay": 500,
+      "retries": 2,
+      "retryDelay": 1000
+    }
+  },
+  "executionStrategy": {
+    "type": "SEQUENTIAL",
+    "maxParallelTests": 3,
+    "stopOnFirstFailure": false
+  },
+  "preconditions": [
+    {
+      "action": "navigate",
+      "target": "https://practice.expandtesting.com",
+      "description": "Ana sayfaya git"
+    }
+  ],
+  "postconditions": [
+    {
+      "action": "navigate",
+      "target": "https://practice.expandtesting.com/logout",
+      "description": "Çıkış yap"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Başarılı Giriş Testi",
+      "description": "Geçerli kullanıcı adı ve şifre ile başarılı giriş yapma testi",
+      "browserPreference": "chromium",
+      "headless": false,
+      "takeScreenshots": true,
+      "browserFullScreen": true,
+      "priority": "HIGH",
+      "category": "FUNCTIONAL",
+      "tags": ["login", "positive"],
+      "preconditions": "Kullanıcı adı ve şifre bilgileri bilinmelidir.",
+      "expectedResults": "Kullanıcı başarıyla giriş yapmalıdır ve güvenli sayfaya yönlendirilmelidir.",
+      "continueOnFailure": true,
+      "stepOptions": {
+        "delay": 500,
+        "retries": 2,
+        "retryDelay": 1000
+      },
+      "steps": [
+        {
+          "action": "navigate",
+          "target": "https://practice.expandtesting.com/login",
+          "description": "Login sayfasına git"
+        },
+        {
+          "action": "wait",
+          "value": "500",
+          "description": "Sayfanın yüklenmesini bekle"
+        },
+        {
+          "action": "type",
+          "target": "#username",
+          "strategy": "id",
+          "value": "practice",
+          "description": "Kullanıcı adını gir"
+        },
+        {
+          "action": "wait",
+          "value": "500",
+          "description": "Kısa bekle"
+        },
+        {
+          "action": "type",
+          "target": "#password",
+          "strategy": "id",
+          "value": "SuperSecretPassword!",
+          "description": "Şifreyi gir"
+        },
+        {
+          "action": "wait",
+          "value": "500",
+          "description": "Kısa bekle"
+        },
+        {
+          "action": "click",
+          "target": "button[type='submit']",
+          "strategy": "css",
+          "description": "Giriş butonuna tıkla"
+        },
+        {
+          "action": "wait",
+          "value": "300",
+          "description": "Yönlendirmeyi bekle"
+        },
+        {
+          "action": "verifyUrl",
+          "target": "https://practice.expandtesting.com/secure-area",
+          "description": "URL'in güvenli sayfaya yönlendirildiğini doğrula"
+        }
+      ]
+    },
+    {
+      "name": "Geçersiz Giriş Testi",
+      "description": "Geçersiz kullanıcı adı ve şifre ile giriş yapma testi",
+      "browserPreference": "chromium",
+      "headless": false,
+      "takeScreenshots": true,
+      "browserFullScreen": true,
+      "priority": "MEDIUM",
+      "category": "FUNCTIONAL",
+      "tags": ["login", "negative"],
+      "preconditions": "Geçersiz kullanıcı adı ve şifre bilgileri kullanılmalıdır.",
+      "expectedResults": "Kullanıcı giriş yapamamalı ve hata mesajı görmelidir.",
+      "continueOnFailure": true,
+      "stepOptions": {
+        "delay": 500,
+        "retries": 2,
+        "retryDelay": 1000
+      },
+      "steps": [
+        {
+          "action": "navigate",
+          "target": "https://practice.expandtesting.com/login",
+          "description": "Login sayfasına git"
+        },
+        {
+          "action": "wait",
+          "value": "500",
+          "description": "Sayfanın yüklenmesini bekle"
+        },
+        {
+          "action": "type",
+          "target": "#username",
+          "strategy": "id",
+          "value": "invalid_user",
+          "description": "Geçersiz kullanıcı adını gir"
+        },
+        {
+          "action": "wait",
+          "value": "500",
+          "description": "Kısa bekle"
+        },
+        {
+          "action": "type",
+          "target": "#password",
+          "strategy": "id",
+          "value": "invalid_password",
+          "description": "Geçersiz şifreyi gir"
+        },
+        {
+          "action": "wait",
+          "value": "500",
+          "description": "Kısa bekle"
+        },
+        {
+          "action": "click",
+          "target": "button[type='submit']",
+          "strategy": "css",
+          "description": "Giriş butonuna tıkla"
+        },
+        {
+          "action": "wait",
+          "value": "300",
+          "description": "Hata mesajını bekle"
+        },
+        {
+          "action": "verifyElementPresent",
+          "target": "#flash",
+          "strategy": "id",
+          "description": "Hata mesajının görüntülendiğini doğrula"
+        },
+        {
+          "action": "verifyElementContainsText",
+          "target": "#flash",
+          "strategy": "id",
+          "value": "Your username is invalid!",
+          "description": "Hata mesajının doğru olduğunu doğrula"
+        }
+      ]
+    }
+  ]
+}
